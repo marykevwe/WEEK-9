@@ -7,6 +7,6 @@ function addTask() {
     } else {
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
-        list.appendChild(li); // Use "appendChild" here
+        list.appendChild(li);
     }
 }
