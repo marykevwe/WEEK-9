@@ -18,7 +18,7 @@ function addTask() {
 list.addEventListener("click", function(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
-        saveDate();
+        saveData();
 
     } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
@@ -26,7 +26,7 @@ list.addEventListener("click", function(e) {
     }
 }, false);
 
-function saveDate(){
+function saveData(){
     localStorage.setItem("data", list.innerHTML);
 }
 
