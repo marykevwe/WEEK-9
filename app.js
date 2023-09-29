@@ -5,39 +5,32 @@ function addTask() {
     if (inputBox.value === '') {
         alert("You must write something");
     } else {
-        const li = document.createElement("li");
+        let li = document.createElement("li");
         li.innerHTML = inputBox.value;
-
-        const span = document.createElement("span");
+        list.appendChild(li);
+        let span = document.createElement("span")
         span.innerHTML = "\u00d7";
         li.appendChild(span);
-
-        list.appendChild(li);
-
-        inputBox.value = "";
-        saveData();
     }
+    inputBox.value = "";
+    saveData();
 }
-
-list.addEventListener("click", function (e) {
+list.addEventListener("click", function(e) {
     if (e.target.tagName === "LI") {
         e.target.classList.toggle("checked");
         saveData();
+
     } else if (e.target.tagName === "SPAN") {
         e.target.parentElement.remove();
         saveData();
     }
 }, false);
 
-function saveData() {
-    localStorage.setItem("taskList", list.innerHTML);
+function saveData(){
+    localStorage.setItem("data", list.innerHTML);
 }
 
-function showTasks() {
-    const storedData = localStorage.getItem("taskList");
-    if (storedData) {
-        list.innerHTML = storedData;
-    }
+function showTask(){
+    list.innerHTML = localStorage.getItem("data");
 }
-
-showTasks();
+showTask();
